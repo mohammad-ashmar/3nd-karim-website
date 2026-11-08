@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 <head>
@@ -111,7 +112,7 @@
                     </p>
                 </div>
 
-                <!-- JavaScript will insert the menu items here -->
+                <!-- JavaScript inserts menu items here -->
                 <div id="menu-items" class="menu-grid"></div>
 
             </div>
@@ -157,13 +158,17 @@
                         <strong id="cart-total">0 LBP</strong>
                     </div>
 
+
                     <!-- Customer Information -->
                     <div class="customer-info">
+
                         <h3 data-en="Customer Information"
                             data-ar="معلومات الزبون">
                             Customer Information
                         </h3>
 
+
+                        <!-- Full Name -->
                         <div class="form-group">
                             <label for="customer-name"
                                    data-en="Full Name"
@@ -183,6 +188,8 @@
                             >
                         </div>
 
+
+                        <!-- Phone Number -->
                         <div class="form-group">
                             <label for="customer-phone"
                                    data-en="Phone Number"
@@ -202,15 +209,101 @@
                                 required
                             >
                         </div>
+
+
+                        <!-- Pickup or Delivery -->
+                        <div class="form-group order-method-group">
+
+                            <label data-en="How would you like to receive your order?"
+                                   data-ar="كيف تفضّلون استلام طلبكم؟">
+                                How would you like to receive your order?
+                            </label>
+
+                            <div class="order-method-options">
+
+                                <label class="order-method-option" for="pickup-option">
+                                    <input
+                                        type="radio"
+                                        id="pickup-option"
+                                        name="order-method"
+                                        value="pickup"
+                                        checked
+                                    >
+
+                                    <span
+                                        data-en="Pickup from the restaurant"
+                                        data-ar="استلام من المطعم">
+                                        Pickup from the restaurant
+                                    </span>
+                                </label>
+
+
+                                <label class="order-method-option" for="delivery-option">
+                                    <input
+                                        type="radio"
+                                        id="delivery-option"
+                                        name="order-method"
+                                        value="delivery"
+                                    >
+
+                                    <span data-en="Delivery" data-ar="توصيل">
+                                        Delivery
+                                    </span>
+                                </label>
+
+                            </div>
+                        </div>
+
+
+                        <!-- Delivery Location -->
+                        <div
+                            class="form-group delivery-location-group"
+                            id="delivery-location-group"
+                            hidden
+                        >
+
+                            <label for="delivery-location"
+                                   data-en="Google Maps Location Link"
+                                   data-ar="رابط موقعك على خرائط Google">
+                                Google Maps Location Link
+                            </label>
+
+                            <input
+                                type="url"
+                                id="delivery-location"
+                                name="delivery-location"
+                                placeholder="Paste your Google Maps sharing link"
+                                data-placeholder-en="Paste your Google Maps sharing link"
+                                data-placeholder-ar="ألصق رابط موقعك من خرائط Google"
+                                inputmode="url"
+                                autocomplete="url"
+                            >
+
+                            <small class="field-hint"
+                                   data-en="Open Google Maps, choose your location, tap Share, then copy and paste the link here."
+                                   data-ar="افتح خرائط Google، حدّد موقعك، اضغط على مشاركة، ثم انسخ الرابط وألصقه هنا.">
+                                Open Google Maps, choose your location, tap Share, then copy and paste the link here.
+                            </small>
+
+                        </div>
+
                     </div>
 
-                    <button id="checkout-btn" class="primary-btn checkout-btn" type="button">
+
+                    <!-- WhatsApp Checkout -->
+                    <button
+                        id="checkout-btn"
+                        class="primary-btn checkout-btn"
+                        type="button"
+                    >
                         <span data-en="Order via WhatsApp"
                               data-ar="اطلبوا عبر واتساب">
                             Order via WhatsApp
                         </span>
+
                         <span aria-hidden="true">↗</span>
                     </button>
+
 
                     <p class="checkout-note"
                        data-en="Enter your name and phone number before ordering. WhatsApp will open so you can review and send your order."
@@ -229,6 +322,7 @@
             <div class="container">
 
                 <div class="section-heading">
+
                     <p class="eyebrow"
                        data-en="WE'RE HERE FOR YOU"
                        data-ar="أهلاً وسهلاً بكم">
@@ -239,11 +333,15 @@
                         data-ar="زورونا أو تواصلوا معنا">
                         Visit or Contact Us
                     </h2>
+
                 </div>
+
 
                 <div class="contact-grid">
 
+                    <!-- Restaurant Location -->
                     <div class="contact-card">
+
                         <div class="contact-icon" aria-hidden="true">⌖</div>
 
                         <h3 data-en="Our Location" data-ar="موقعنا">
@@ -264,10 +362,13 @@
                             data-ar="اعثروا علينا على الخريطة ↗">
                             Find Us on Maps ↗
                         </a>
+
                     </div>
 
 
+                    <!-- WhatsApp -->
                     <div class="contact-card">
+
                         <div class="contact-icon" aria-hidden="true">☏</div>
 
                         <h3 data-en="WhatsApp Us" data-ar="تواصلوا عبر واتساب">
@@ -285,10 +386,13 @@
                             data-ar="ابدؤوا المحادثة ↗">
                             Start a Conversation ↗
                         </a>
+
                     </div>
 
 
+                    <!-- Instagram -->
                     <div class="contact-card">
+
                         <div class="contact-icon" aria-hidden="true">◎</div>
 
                         <h3 data-en="Follow Our Instagram"
@@ -307,20 +411,31 @@
                             data-ar="زوروا صفحتنا ↗">
                             Visit Instagram ↗
                         </a>
+
                     </div>
 
+
+                    <!-- Tribute -->
                     <div class="tribute">
-                        <p class="trribute-title">In Memory of the Martyr</p>
-                        <h3>Ali Shahrour</h3>
-                        <p class="tribure-message">
+
+                        <p class="tribute-title"
+                           data-en="In Memory of the Martyr"
+                           data-ar="وفاءً لذكرى الشهيد">
+                            In Memory of the Martyr
+                        </p>
+
+                        <h3 data-en="Ali Shahrour"
+                            data-ar="علي شحرور">
+                            Ali Shahrour
+                        </h3>
+
+                        <p class="tribute-message"
+                           data-en="We kindly invite you to recite Surah Al-Fatiha for the soul of the martyr Ali Shahrour."
+                           data-ar="ندعوكم لقراءة سورة الفاتحة عن روح الشهيد علي شحرور.">
                             We kindly invite you to recite Surah Al-Fatiha for the soul of the martyr Ali Shahrour.
                         </p>
-                        <p class="tribute-arabic" lang="ar" dir="rtl">
-                            قراة سورة الفاتحة عن روح الشهيد علي شحرور
-                        </p>
-                    </div>
 
-                    
+                    </div>
 
                 </div>
 
@@ -336,25 +451,33 @@
         href="https://wa.me/96171329923"
         target="_blank"
         rel="noopener noreferrer"
-        aria-label="Contact 3nd Karim on WhatsApp">
+        aria-label="Contact 3nd Karim on WhatsApp"
+    >
         WhatsApp
     </a>
 
 
     <!-- Footer -->
     <footer class="footer">
+
         <div class="container">
+
             <p>
                 © <span id="current-year"></span>
-                <span data-en="Web Design and Development by Mohammad Mahdi Ashmar 2026"
-                      data-ar="تصميم وتطوير الويب بواسطة محمد مهدي اشمر 2026">
-                    Web Design and Development by Mohammad Mahdi Ashmar 2026
+
+                <span
+                    data-en="Web Design and Development by <M.ASH/> 2026"
+                    data-ar="</M.ASH> ">
+                    Web Design and Development by  2026
                 </span>
             </p>
+
         </div>
+
     </footer>
 
 
+    <!-- JavaScript -->
     <script src="scripts.js"></script>
 
 </body>
