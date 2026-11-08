@@ -1,3 +1,4 @@
+
 // ==========================================
 // 3ND KARIM — RESTAURANT WEBSITE
 // ==========================================
@@ -17,6 +18,7 @@ const selectedBread = {};
 
 const sandwichItemIds = [3, 4, 5, 6, 7, 8, 9, 10];
 
+
 // ==========================================
 // MENU DATA
 // Prices are in Lebanese pounds (LBP)
@@ -25,7 +27,7 @@ const sandwichItemIds = [3, 4, 5, 6, 7, 8, 9, 10];
 const menuItems = [
     {
         id: 1,
-        name: { en: "Kofta", ar: "كفتة" },
+        name: { en: "Kafta", ar: "كفتة" },
         price: 210000
     },
     {
@@ -40,7 +42,7 @@ const menuItems = [
     },
     {
         id: 4,
-        name: { en: "Roast Beef", ar: "روستو" },
+        name: { en: "Rosto", ar: "روستو" },
         price: 250000
     },
     {
@@ -51,7 +53,7 @@ const menuItems = [
     {
         id: 6,
         name: { en: "Smoked Chicken", ar: "دجاج مدخن" },
-        price: 330000
+        price: 230000
     },
     {
         id: 7,
@@ -65,12 +67,12 @@ const menuItems = [
     },
     {
         id: 9,
-        name: { en: "Beef Tongue", ar: "لسانيات" },
+        name: { en: "Beef Tongue", ar: "لسانات" },
         price: 220000
     },
     {
         id: 10,
-        name: { en: "Two Skewers (Pan-Fried)", ar: "عالسيخين (بالمقلاية)" },
+        name: { en: "3al Sekhien (Pan-Fried)", ar: "عالسيخين (بالمقلاية)" },
         price: 250000
     },
     {
@@ -84,23 +86,22 @@ const menuItems = [
         price: 100000
     },
     {
-        id:13,
-        name: {en: "Pepsi" , ar:"بيبسي"},
-        price:100000
+        id: 13,
+        name: { en: "Pepsi", ar: "بيبسي" },
+        price: 100000
     },
     {
-        id:14,
-        name: {en: "7up" , ar:"سفن اب"},
-        price:100000
+        id: 14,
+        name: { en: "7up", ar: "سفن اب" },
+        price: 100000
     },
     {
-        id:15,
-        name: {en: "Miranda" , ar:"ميرندا"},
-        price:100000
-    },
-
-        
+        id: 15,
+        name: { en: "Miranda", ar: "ميرندا" },
+        price: 100000
+    }
 ];
+
 
 // ==========================================
 // HTML ELEMENTS
@@ -113,6 +114,7 @@ const cartTotal = document.getElementById("cart-total");
 const checkoutButton = document.getElementById("checkout-btn");
 const languageButton = document.getElementById("language-toggle");
 
+
 // ==========================================
 // FORMAT PRICE
 // ==========================================
@@ -120,6 +122,7 @@ const languageButton = document.getElementById("language-toggle");
 function formatPrice(price) {
     return `${price.toLocaleString("en-US")} LBP`;
 }
+
 
 // ==========================================
 // DISPLAY MENU
@@ -150,6 +153,7 @@ function renderMenu() {
         const actions = document.createElement("div");
         actions.className = "menu-actions";
 
+
         // ======================================
         // BREAD SELECTOR
         // Only items 3–10 have bread options.
@@ -165,15 +169,16 @@ function renderMenu() {
             const breadSelector = document.createElement("div");
             breadSelector.className = "bread-selector";
 
-            // French bread button
-            const frenchButton = document.createElement("button");
-            frenchButton.type = "button";
-            frenchButton.className = "bread-option";
+            // franji bread button
+            const franjiButton = document.createElement("button");
+            franjiButton.type = "button";
+            franjiButton.className = "bread-option";
 
-            frenchButton.textContent =
-                currentLanguage === "en" ? "French" : "فرنجي";
+            franjiButton.textContent =
+                currentLanguage === "en" ? "Franji" : "فرنجي";
 
-            frenchButton.setAttribute("aria-pressed", "false");
+            franjiButton.setAttribute("aria-pressed", "false");
+
 
             // Arabic bread button
             const arabicButton = document.createElement("button");
@@ -185,29 +190,32 @@ function renderMenu() {
 
             arabicButton.setAttribute("aria-pressed", "false");
 
+
             // Update selected button
             function updateBreadSelection() {
-                const isFrench = selectedBread[item.id] === "french";
+                const isfranji = selectedBread[item.id] === "franji";
 
-                frenchButton.classList.toggle("active", isFrench);
-                arabicButton.classList.toggle("active", !isFrench);
+                franjiButton.classList.toggle("active", isfranji);
+                arabicButton.classList.toggle("active", !isfranji);
 
-                frenchButton.setAttribute(
+                franjiButton.setAttribute(
                     "aria-pressed",
-                    String(isFrench)
+                    String(isfranji)
                 );
 
                 arabicButton.setAttribute(
                     "aria-pressed",
-                    String(!isFrench)
+                    String(!isfranji)
                 );
             }
 
-            // Select French bread
-            frenchButton.addEventListener("click", () => {
-                selectedBread[item.id] = "french";
+
+            // Select franji bread
+            franjiButton.addEventListener("click", () => {
+                selectedBread[item.id] = "franji";
                 updateBreadSelection();
             });
+
 
             // Select Arabic bread
             arabicButton.addEventListener("click", () => {
@@ -215,13 +223,15 @@ function renderMenu() {
                 updateBreadSelection();
             });
 
-            breadSelector.appendChild(frenchButton);
+
+            breadSelector.appendChild(franjiButton);
             breadSelector.appendChild(arabicButton);
 
             updateBreadSelection();
 
             actions.appendChild(breadSelector);
         }
+
 
         // ======================================
         // ADD TO CART BUTTON
@@ -257,6 +267,7 @@ function renderMenu() {
     });
 }
 
+
 // ==========================================
 // ADD TO CART
 // ==========================================
@@ -282,6 +293,7 @@ function addToCart(itemId, breadType = null) {
 
     renderCart();
 }
+
 
 // ==========================================
 // CHANGE QUANTITY
@@ -312,6 +324,7 @@ function changeQuantity(itemId, breadType, amount) {
     renderCart();
 }
 
+
 // ==========================================
 // REMOVE ITEM
 // ==========================================
@@ -328,6 +341,7 @@ function removeFromCart(itemId, breadType) {
 
     renderCart();
 }
+
 
 // ==========================================
 // DISPLAY CART
@@ -368,9 +382,11 @@ function renderCart() {
         total += subtotal;
         totalQuantity += cartItem.quantity;
 
+
         // Cart item container
         const itemElement = document.createElement("div");
         itemElement.className = "cart-item";
+
 
         // Item information
         const info = document.createElement("div");
@@ -380,10 +396,10 @@ function renderCart() {
 
         let breadLabel = "";
 
-        if (cartItem.breadType === "french") {
+        if (cartItem.breadType === "franji") {
             breadLabel =
                 currentLanguage === "en"
-                    ? " - on French bread"
+                    ? " - on franji bread"
                     : " - على خبز فرنسي";
         } else if (cartItem.breadType === "arabic") {
             breadLabel =
@@ -402,9 +418,11 @@ function renderCart() {
         info.appendChild(title);
         info.appendChild(price);
 
+
         // Quantity controls
         const controls = document.createElement("div");
         controls.className = "cart-item-controls";
+
 
         // Decrease quantity
         const decreaseButton = document.createElement("button");
@@ -428,11 +446,13 @@ function renderCart() {
             );
         });
 
+
         // Quantity display
         const quantity = document.createElement("span");
 
         quantity.className = "quantity";
         quantity.textContent = cartItem.quantity;
+
 
         // Increase quantity
         const increaseButton = document.createElement("button");
@@ -456,6 +476,7 @@ function renderCart() {
             );
         });
 
+
         // Remove item
         const removeButton = document.createElement("button");
 
@@ -474,6 +495,7 @@ function renderCart() {
             );
         });
 
+
         // Add controls
         controls.appendChild(decreaseButton);
         controls.appendChild(quantity);
@@ -486,10 +508,12 @@ function renderCart() {
         cartContainer.appendChild(itemElement);
     });
 
+
     // Update cart count and total
     cartCount.textContent = totalQuantity;
     cartTotal.textContent = formatPrice(total);
 }
+
 
 // ==========================================
 // ENGLISH / ARABIC TRANSLATION
@@ -505,12 +529,14 @@ function updateLanguage() {
     document.body.dir =
         currentLanguage === "ar" ? "rtl" : "ltr";
 
+
     // Translate HTML elements
     document.querySelectorAll("[data-en][data-ar]").forEach((element) => {
 
         element.textContent = element.dataset[currentLanguage];
 
     });
+
 
     // Update input placeholders
     document.querySelectorAll(
@@ -524,11 +550,13 @@ function updateLanguage() {
 
     });
 
+
     // Update language button
     languageButton.textContent =
         currentLanguage === "en"
             ? "العربية"
             : "English";
+
 
     // Update page title
     document.title =
@@ -536,10 +564,12 @@ function updateLanguage() {
             ? "3nd Karim | Lebanese Restaurant"
             : "عند كريم | مطعم لبناني";
 
+
     // Refresh menu and cart
     renderMenu();
     renderCart();
 }
+
 
 // Language button event
 languageButton.addEventListener("click", () => {
@@ -552,29 +582,6 @@ languageButton.addEventListener("click", () => {
     updateLanguage();
 });
 
-// ==========================================
-// PICKUP / DELIVERY INTERACTION
-// ==========================================
-
-const pickupOption = document.getElementById("pickup-option");
-const deliveryOption = document.getElementById("delivery-option");
-const deliveryLocationGroup = document.getElementById("delivery-location-group");
-const deliveryLocationInput = document.getElementById("delivery-location");
-
-function updateOrderMethod() {
-    const isDelivery = deliveryOption.checked;
-
-    deliveryLocationGroup.hidden = !isDelivery;
-    deliveryLocationInput.required = isDelivery;
-
-    if (!isDelivery) {
-        deliveryLocationInput.value = "";
-    }
-}
-
-pickupOption.addEventListener("change", updateOrderMethod);
-deliveryOption.addEventListener("change", updateOrderMethod);
-updateOrderMethod();
 
 // ==========================================
 // WHATSAPP CHECKOUT
@@ -582,113 +589,116 @@ updateOrderMethod();
 
 checkoutButton.addEventListener("click", () => {
 
+    // Check if cart is empty
     if (cart.length === 0) {
         alert(
             currentLanguage === "en"
                 ? "Your cart is empty. Please add items before ordering."
                 : "سلّتكم فارغة. يرجى إضافة الأصناف قبل الطلب."
         );
+
         return;
     }
 
-    const customerName = document.getElementById("customer-name").value.trim();
-    const customerPhone = document.getElementById("customer-phone").value.trim();
-    const orderMethod = deliveryOption.checked ? "delivery" : "pickup";
-    const deliveryLocation = deliveryLocationInput.value.trim();
 
+    // Get customer information
+    const customerName = document
+        .getElementById("customer-name")
+        .value
+        .trim();
+
+    const customerPhone = document
+        .getElementById("customer-phone")
+        .value
+        .trim();
+
+
+    // Validate customer information
     if (!customerName || !customerPhone) {
         alert(
             currentLanguage === "en"
                 ? "Please enter your full name and phone number before ordering."
                 : "يرجى إدخال الاسم الكامل ورقم الهاتف قبل إرسال الطلب."
         );
+
         return;
     }
 
-    if (orderMethod === "delivery") {
-        if (!deliveryLocation) {
-            alert(
-                currentLanguage === "en"
-                    ? "Please add your Google Maps location link for delivery."
-                    : "يرجى إضافة رابط موقعك على خرائط Google لطلب التوصيل."
-            );
-            deliveryLocationInput.focus();
-            return;
-        }
 
-        let isGoogleMapsLink = false;
-        try {
-            const parsedLocation = new URL(deliveryLocation);
-            const host = parsedLocation.hostname.toLowerCase();
-            isGoogleMapsLink =
-                parsedLocation.protocol === "https:" &&
-                (host === "maps.app.goo.gl" || host === "goo.gl" ||
-                 host === "google.com" || host.endsWith(".google.com"));
-        } catch (error) {
-            isGoogleMapsLink = false;
-        }
-
-        if (!isGoogleMapsLink) {
-            alert(
-                currentLanguage === "en"
-                    ? "Please paste a valid Google Maps sharing link."
-                    : "يرجى لصق رابط مشاركة صحيح من خرائط Google."
-            );
-            deliveryLocationInput.focus();
-            return;
-        }
-    }
-
-    const methodText = orderMethod === "delivery"
-        ? (currentLanguage === "en" ? "Delivery" : "توصيل")
-        : (currentLanguage === "en" ? "Pickup from the restaurant" : "استلام من المطعم");
-
+    // Create WhatsApp message
     let message = currentLanguage === "en"
-        ? `Hello 3nd Karim! I would like to place an order.\n\nCustomer name: ${customerName}\nPhone number: ${customerPhone}\nOrder method: ${methodText}\n`
-        : `مرحباً عند كريم! أود تقديم الطلب التالي.\n\nاسم الزبون: ${customerName}\nرقم الهاتف: ${customerPhone}\nطريقة الاستلام: ${methodText}\n`;
+        ? `Hello 3nd Karim! I would like to place an order.\n\nCustomer name: ${customerName}\nPhone number: ${customerPhone}\n`
+        : `مرحباً عند كريم! أود تقديم الطلب التالي.\n\nاسم الزبون: ${customerName}\nرقم الهاتف: ${customerPhone}\n`;
 
-    if (orderMethod === "delivery") {
-        message += currentLanguage === "en"
-            ? `Google Maps location: ${deliveryLocation}\n`
-            : `موقع التوصيل على خرائط Google: ${deliveryLocation}\n`;
-    }
 
-    message += currentLanguage === "en" ? "\nOrder details:\n" : "\nتفاصيل الطلب:\n";
+    message += currentLanguage === "en"
+        ? "\nOrder details:\n"
+        : "\nتفاصيل الطلب:\n";
+
 
     let total = 0;
 
+
+    // Add cart items to message
     cart.forEach((cartItem) => {
-        const menuItem = menuItems.find((item) => item.id === cartItem.id);
+
+        const menuItem = menuItems.find(
+            (item) => item.id === cartItem.id
+        );
+
         if (!menuItem) return;
 
         const subtotal = menuItem.price * cartItem.quantity;
+
         total += subtotal;
 
+
+        // Add bread type
         let breadText = "";
-        if (cartItem.breadType === "french") {
-            breadText = currentLanguage === "en" ? " on French bread" : " على خبز فرنسي";
+
+        if (cartItem.breadType === "franji") {
+            breadText =
+                currentLanguage === "en"
+                    ? " on franji bread"
+                    : " على خبز فرنسي";
         } else if (cartItem.breadType === "arabic") {
-            breadText = currentLanguage === "en" ? " on Arabic bread" : " على خبز عربي";
+            breadText =
+                currentLanguage === "en"
+                    ? " on Arabic bread"
+                    : " على خبز عربي";
         }
 
-        message += `${menuItem.name[currentLanguage]}${breadText} x ${cartItem.quantity} — ${formatPrice(subtotal)}\n`;
+
+        message +=
+            `${menuItem.name[currentLanguage]}${breadText} x ${cartItem.quantity} — ${formatPrice(subtotal)}\n`;
     });
 
-    message += "\n" + (currentLanguage === "en"
-        ? `Total: ${formatPrice(total)}\n\nThank you!`
-        : `المجموع: ${formatPrice(total)}\n\nشكراً لكم!`);
 
-    const whatsappURL = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
+    // Add total
+    message += "\n" + (
+        currentLanguage === "en"
+            ? `Total: ${formatPrice(total)}\n\nThank you!`
+            : `المجموع: ${formatPrice(total)}\n\nشكراً لكم!`
+    );
+
+
+    // Open WhatsApp
+    const whatsappURL =
+        `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
+
     window.open(whatsappURL, "_blank", "noopener,noreferrer");
 });
+
 
 // ==========================================
 // FOOTER YEAR
 // ==========================================
 
-document.getElementById("current-year").textContent =
-    new Date().getFullYear();
+const currentYearElement = document.getElementById("current-year");
 
+if (currentYearElement) {
+    currentYearElement.textContent = new Date().getFullYear();
+}
 // ==========================================
 // INITIALIZE WEBSITE
 // ==========================================
